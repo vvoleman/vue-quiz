@@ -1,5 +1,5 @@
 <template>
-    <div class="settings">
+    <div class="settings card card--settings">
         <h3>Načteno {{ questions.length }} otázek</h3>
         <div>
             <label for="">Počet otázek</label>
@@ -13,13 +13,13 @@
             <label for="randomCorrects" style="margin-right: 5px">Řadit náhodně odpovědi?</label>
             <input id="randomCorrects" type="checkbox" v-model="sortRandomCorrects">
         </div>
-        <button @click="run" v-if="!running" class="run">Spustit</button>
-        <button @click="solve" v-if="running" class="solve">Vyhodnotit</button>
-        <button @click="restart" v-if="running" class="restart">Restartovat</button>
+        <button @click="run" v-if="!running" class="btn btn--run">Spustit</button>
+        <button @click="solve" v-if="running" class="btn btn--solve">Vyhodnotit</button>
+        <button @click="restart" v-if="running" class="btn btn--restart">Restartovat</button>
     </div>
 
-    <QuestionBrowser v-if="running" :questions="runQuestions" @answer="setAnswers"/>
-    <ResultsPage v-if="solved" :questions="runQuestions" :answers="answers"/>
+    <QuestionBrowser v-if="running" :questions="runQuestions" @answer="setAnswers" />
+    <ResultsPage v-if="solved" :questions="runQuestions" :answers="answers" />
 </template>
 
 <script>
@@ -28,7 +28,7 @@ import ResultsPage from "@/components/ResultsPage";
 
 export default {
     name: "QuizPage",
-    components: {ResultsPage, QuestionBrowser},
+    components: { ResultsPage, QuestionBrowser },
     data() {
         return {
             numberOfQuestions: 0,
@@ -50,8 +50,8 @@ export default {
             if (this.sortRandomQuestions) {
                 data = this.shuffle(data)
             }
-            if(this.sortRandomCorrects) {
-                data.map((item)=>{
+            if (this.sortRandomCorrects) {
+                data.map((item) => {
                     //sort options and get new index of original answer
                     let options = this.shuffle(item.options);
                     let correct = item.correct;
@@ -72,9 +72,9 @@ export default {
         },
         shuffle(data) {
             return data
-                .map(value => ({value, sort: Math.random()}))
+                .map(value => ({ value, sort: Math.random() }))
                 .sort((a, b) => a.sort - b.sort)
-                .map(({value}) => value)
+                .map(({ value }) => value)
         },
         restart() {
             this.running = false;
@@ -91,7 +91,7 @@ export default {
             console.log(this.answers)
             for (let i = 0; i < this.runQuestions.length; i++) {
                 const question = this.runQuestions[i].question
-                if(storage[question] == null){
+                if (storage[question] == null) {
                     storage[question] = []
                 }
                 console.log(storage[question], question)
@@ -107,41 +107,36 @@ export default {
 </script>
 
 <style scoped>
-.settings{
+.settings {
     text-align: center;
-    display:flex;
+    display: flex;
     justify-content: center;
     flex-direction: column;
     padding: 15px;
     width: 40%;
-    border:1px solid #ccc;
+    border: 1px solid #ccc;
     margin-left: auto;
     margin-right: auto;
-    margin-top:15px;
+    margin-top: 15px;
 }
+
 .settings button {
     margin-top: 10px;
     font-weight: bold;
     padding: 10px;
 }
-.settings label{
-    display:block;
+
+.settings label {
+    display: block;
 }
-.settings input{
+
+.settings input {
     margin-bottom: 15px;
 }
-.run {
-    background: #42b983;
-}
-.solve{
-    background: #b49cff;
-    font-weight: bold;
-}
-.restart{
-    color:white;
-    background: rgba(253, 53, 76);
-}
+
 @media only screen and (max-width: 720px) {
-    .settings { width: 90%; }
+    .settings {
+        width: 90%;
+    }
 }
 </style>
