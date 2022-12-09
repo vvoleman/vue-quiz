@@ -1,0 +1,14 @@
+on:
+    push:
+        branches:
+            - deploy_test
+jobs:
+    github-pages:
+        runs-on: ubuntu-latest
+        steps:
+            -   uses: actions/checkout@v2
+            -   name: Run script file
+                run: |
+                    chmod +x ./deploy.sh
+                    ./deploy.sh
+                shell: bash
