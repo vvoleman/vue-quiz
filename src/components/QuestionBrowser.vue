@@ -82,7 +82,7 @@ export default {
 }
 
 .active {
-    background: #666;
+    background: var(--indigo-7);
     color: white;
 }
 
