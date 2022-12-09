@@ -1,26 +1,39 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <StatsPage :questions="questions"/>
+    <FileSelect @loaded="loadData"/>
+
+    <QuizPage v-if="loaded" :questions="questions"/>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import FileSelect from "@/components/FileSelect";
+import QuizPage from "@/components/QuizPage";
+import StatsPage from "@/components/StatsPage";
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
+    name: 'App',
+    components: {
+        StatsPage,
+        QuizPage,
+        FileSelect,
+    },
+    data(){
+        return {
+            questions: [],
+            loaded: false,
+        }
+    },
+    methods: {
+        loadData(data){
+            this.loaded = true;
+            this.questions = data
+        }
+    }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+button {
+    cursor: pointer;
 }
 </style>
