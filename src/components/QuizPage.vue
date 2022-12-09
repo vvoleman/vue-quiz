@@ -6,8 +6,12 @@
             <input type="number" v-model="numberOfQuestions">
         </div>
         <div style="display:flex; align-items: baseline; justify-content: center">
-            <label for="check" style="margin-right: 5px">Řadit náhodně?</label>
-            <input id="check" type="checkbox" v-model="sortRandom">
+            <label for="randomQuestions" style="margin-right: 5px">Řadit náhodně otázky?</label>
+            <input id="randomQuestions" type="checkbox" v-model="sortRandomQuestions">
+        </div>
+        <div style="display:flex; align-items: baseline; justify-content: center">
+            <label for="randomCorrects" style="margin-right: 5px">Řadit náhodně odpovědi?</label>
+            <input id="randomCorrects" type="checkbox" v-model="sortRandomCorrects">
         </div>
         <button @click="run" v-if="!running" class="run">Spustit</button>
         <button @click="solve" v-if="running" class="solve">Vyhodnotit</button>
@@ -28,7 +32,8 @@ export default {
     data() {
         return {
             numberOfQuestions: 0,
-            sortRandom: false,
+            sortRandomQuestions: false,
+            sortRandomCorrects: false,
             runQuestions: [],
             running: false,
             answers: [],
@@ -42,8 +47,21 @@ export default {
         run() {
             if (this.numberOfQuestions <= 0 || this.numberOfQuestions > this.questions.length) return;
             let data = this.questions;
-            if (this.sortRandom) {
+            if (this.sortRandomQuestions) {
                 data = this.shuffle(data)
+            }
+            if(this.sortRandomCorrects) {
+                data.map((item)=>{
+                    //sort options and get new index of original answer
+                    let options = this.shuffle(item.options);
+                    let correct = item.correct;
+                    let newCorrect = options.indexOf(item.options[correct]);
+                    console.log(item);
+                    item.options = options;
+                    item.correct = newCorrect;
+
+                    return item
+                })
             }
 
             data = data.slice(0, this.numberOfQuestions)
