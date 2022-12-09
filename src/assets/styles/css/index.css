@@ -1,0 +1,42 @@
+@import "https://unpkg.com/open-props";
+@import "https://unpkg.com/open-props/normalize.min.css";
+* {
+  font-family: var(--font-sans); }
+
+.card {
+  border-radius: var(--radius-2);
+  padding: var(--size-fluid-3);
+  box-shadow: var(--shadow-2);
+  transition: 0.3s var(--ease-elastic-5); }
+  .card:hover {
+    box-shadow: var(--shadow-2); }
+  .card--animated {
+    animation: var(--animation-scale-down) reverse, var(--animation-fade-out) reverse;
+    animation-timing-function: var(--ease-squish-5);
+    animation-duration: 1s; }
+  .card--file-select .card__body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin: 0 auto; }
+  .card--file-select .card__input * {
+    background: none;
+    margin-left: 10%; }
+  .card__title {
+    text-align: center;
+    font-size: var(--font-size-fluid-1);
+    font-weight: bold; }
+
+.btn--solve {
+  background: var(--green-7); }
+
+.btn--run {
+  background: var(--green-8); }
+
+.btn--restart {
+  background: var(--red-8); }
+
+.btn--answered {
+  background: var(--green-9); }

@@ -1,8 +1,8 @@
 <template>
-    <StatsPage :questions="questions"/>
-    <FileSelect @loaded="loadData"/>
+    <StatsPage :questions="questions" />
+    <FileSelect @loaded="loadData" />
 
-    <QuizPage v-if="loaded" :questions="questions"/>
+    <QuizPage v-if="loaded" :questions="questions" />
 </template>
 
 <script>
@@ -17,14 +17,14 @@ export default {
         QuizPage,
         FileSelect,
     },
-    data(){
+    data() {
         return {
             questions: [],
             loaded: false,
         }
     },
     methods: {
-        loadData(data){
+        loadData(data) {
             this.loaded = true;
             this.questions = data
         }
@@ -33,7 +33,15 @@ export default {
 </script>
 
 <style>
+@import "/src/assets/styles/css/index.css";
+</style>
+
+<style>
 button {
     cursor: pointer;
+}
+
+#app {
+    position: relative;
 }
 </style>

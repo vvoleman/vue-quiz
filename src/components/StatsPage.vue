@@ -1,19 +1,21 @@
 <template>
     <button @click="display = !display">{{ !display ? "Zobrazit" : "Schovat" }} historii</button>
     <div v-if="display">
-        <table>
+        <table class="modal modal--history">
             <thead>
-            <tr>
-                <th>Otázka</th>
-                <th>Celkový počet</th>
-                <th>Úspěšnost</th>
-            </tr>
+                <tr>
+                    <th>Otázka</th>
+                    <th>Celkový počet</th>
+                    <th>Úspěšnost</th>
+                </tr>
             </thead>
             <tbody>
                 <tr v-for="question in allQuestions" :key="question.question">
-                    <td>{{question.question}}</td>
-                    <td>{{question.total}}</td>
-                    <td :class="{'bad': question.percentage >= 0 && question.percentage < 70}">{{question.percentage >= 0 ? question.percentage+"%" : 'Žádný záznam'}}</td>
+                    <td>{{ question.question }}</td>
+                    <td>{{ question.total }}</td>
+                    <td :class="{ 'bad': question.percentage >= 0 && question.percentage < 70 }">{{ question.percentage
+                    >=
+                    0 ? question.percentage + "%" : 'Žádný záznam'}}</td>
                 </tr>
             </tbody>
         </table>
@@ -67,7 +69,7 @@ export default {
                     'question': question,
                     'total': temp[question].length,
                     'correct': correct,
-                    'percentage': this.percentage(correct,temp[question].length)
+                    'percentage': this.percentage(correct, temp[question].length)
                 })
             }
 
@@ -84,23 +86,42 @@ export default {
 </script>
 
 <style scoped>
-td, th {
-    border: 1px solid #ddd;
+td,
+th {
+    border: 1px solid var(--surface-4);
     padding: 8px;
 }
 
-tr:nth-child(even){background-color: #f2f2f2;}
+tr:nth-child(even) {
+    background-color: var(--surface-2);
+}
 
-tr:hover {background-color: #ddd;}
+tr:hover {
+    background-color: var(--surface-2);
+}
 
 th {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
-    background-color: #04AA6D;
+    background: var(--green-9);
     color: white;
 }
+
 .bad {
-    background: #fd354c;
+    background: var(--red-8);
+}
+</style>
+
+<style scoped lang="scss">
+.modal {
+    z-index: 9999;
+
+    &--history {
+        position: absolute;
+        background: var(--surface-3);
+
+        transition: .3s ease-in-out;
+    }
 }
 </style>
