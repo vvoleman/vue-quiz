@@ -1,11 +1,12 @@
 <template>
-    <div class="file-select">
-        <div class="first">
-            <b> Vyber soubor s daty:
-            </b>
-            <input type="file" ref="file" @change="change">
+    <div class="file-select card card--animated card--file-select">
+        <div class="first card__body">
+            <span class="card__title">Vyberte soubor s daty</span>
+            <div class="card__input">
+                <input type="file" ref="file" @change="change">
+            </div>
         </div>
-        <button @click="load" class="loadBtn" v-if="isLoaded">Načíst</button>
+        <button @click="load" class="loadBtn btn" v-if="isLoaded">Načíst</button>
     </div>
 </template>
 
@@ -39,15 +40,9 @@ export default {
 
 <style scoped>
 .file-select {
-    padding: 20px;
-    background: #eee;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 40%;
-    margin-left: auto;
-    margin-right: auto;
-    border:1px solid #ccc;
+    max-width: 350px;
+    margin: 0 auto;
+    border: 1px solid #ccc;
 }
 
 .first {
@@ -65,6 +60,8 @@ export default {
 }
 
 @media only screen and (max-width: 720px) {
-.file-select { width: 90%; }
+    .file-select {
+        width: 90%;
+    }
 }
 </style>

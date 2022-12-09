@@ -1,0 +1,17 @@
+.btn {
+    &--solve {
+        background: var(--green-7);
+    }
+
+    &--run {
+        background: var(--green-8);
+    }
+
+    &--restart {
+        background: var(--red-8);
+    }
+
+    &--answered {
+        background: var(--green-9);
+    }
+}

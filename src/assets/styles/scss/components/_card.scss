@@ -1,0 +1,40 @@
+.card {
+    border-radius: var(--radius-2);
+    padding: var(--size-fluid-3);
+    box-shadow: var(--shadow-2);
+
+    transition: .3s var(--ease-elastic-5);
+
+    &:hover {
+        box-shadow: var(--shadow-2);
+    }
+
+    &--animated {
+        animation: var(--animation-scale-down) reverse, var(--animation-fade-out) reverse;
+        animation-timing-function: var(--ease-squish-5);
+        animation-duration: 1s;
+    }
+
+    &--file-select {
+        .card__body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            margin: 0 auto;
+        }
+
+        .card__input * {
+            background: none;
+            margin-left: 10%;
+        }
+    }
+
+    &__title {
+        text-align: center;
+        font-size: var(--font-size-fluid-1);
+        font-weight: bold;
+    }
+
+}

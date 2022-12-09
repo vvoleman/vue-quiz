@@ -1,16 +1,16 @@
 <template>
     <div class="list">
         <button v-for="i in questions.length" class="question-box"
-             :class="{'active':currentQuestion === i-1,'answered':answers[i-1] != null}" :key="i"
-             @click="currentQuestion = i-1">
+            :class="{ 'active': currentQuestion === i - 1, 'btn btn--answered': answers[i - 1] != null }" :key="i"
+            @click="currentQuestion = i - 1">
             <b>{{ i }}</b>
         </button>
     </div>
     <div class="question">
         <h3>{{ question.question }}</h3>
-        <div v-for="(option,i) in question.options" :key="option">
-            <input :id="i" type="radio" :name="currentQuestion" :value="i"
-                   v-model="answers[currentQuestion]" @change="change">
+        <div v-for="(option, i) in question.options" :key="option">
+            <input :id="i" type="radio" :name="currentQuestion" :value="i" v-model="answers[currentQuestion]"
+                @change="change">
             <label :for="i">{{ option }}</label>
         </div>
     </div>
@@ -33,18 +33,18 @@ export default {
             return this.questions[this.currentQuestion]
         }
     },
-    unmounted () {
+    unmounted() {
         document.removeEventListener("keyup", this.nextItem)
     },
     mounted() {
         document.addEventListener("keyup", this.nextItem);
     },
-    methods:{
-        change(){
+    methods: {
+        change() {
             console.log('f');
             this.$emit('answer', this.answers)
         },
-        nextItem (event) {
+        nextItem(event) {
             if (event.keyCode === 37) {
                 if (this.currentQuestion - 1 < 0) {
                     this.currentQuestion = this.questions.length - 1;
@@ -64,10 +64,9 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .list {
-    padding:15px;
-    background: #fefefe;
+    padding: 15px;
     display: flex;
     flex-wrap: wrap;
     margin-left: auto;
@@ -78,8 +77,7 @@ export default {
 .question-box {
     padding: 15px;
     margin: 5px;
-    background: #eee;
-    border:none;
+    border: none;
 
 }
 
@@ -87,18 +85,26 @@ export default {
     background: #666;
     color: white;
 }
-.answered {
-    background: #42b983;
-}
-.question{
-    background: #eee;
+
+.question {
     border: 1px solid #ccc;
-    padding:15px;
+    padding: 15px;
     width: 60%;
     margin-left: auto;
     margin-right: auto;
 }
-.question h3{
+
+.question h3 {
     text-decoration: underline;
+}
+
+.question {
+    h3 {
+        margin-bottom: var(--size-2);
+    }
+
+    label {
+        margin-left: var(--size-3);
+    }
 }
 </style>
