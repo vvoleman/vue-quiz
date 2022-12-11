@@ -1,8 +1,10 @@
 <template>
-    <StatsPage :questions="questions" />
-    <FileSelect @loaded="loadData" />
+    <div class="container">
+        <StatsPage :questions="questions" />
+        <FileSelect @loaded="loadData" />
 
-    <QuizPage v-if="loaded" :questions="questions" />
+        <QuizPage v-if="loaded" :questions="questions" />
+    </div>
 </template>
 
 <script>
@@ -43,5 +45,38 @@ button {
 
 #app {
     position: relative;
+}
+</style>
+
+<style lang="scss">
+.container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+@media (min-width: 768px) {
+    .container {
+        width: 750px;
+    }
+}
+
+@media (min-width: 992px) {
+    .container {
+        width: 970px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        width: 1170px;
+    }
+}
+
+@media (min-width: 1400px) {
+    .container {
+        width: 1320px;
+    }
 }
 </style>

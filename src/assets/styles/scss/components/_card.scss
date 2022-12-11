@@ -2,11 +2,13 @@
     border-radius: var(--radius-2);
     padding: var(--size-fluid-3);
     box-shadow: var(--shadow-2);
+    overflow: hidden;
+    position: relative;
 
     transition: .3s var(--ease-elastic-5);
 
     &:hover {
-        box-shadow: var(--shadow-2);
+        box-shadow: var(--shadow-3);
     }
 
     &--animated {
@@ -21,13 +23,19 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            gap: 1rem;
+            gap: 2rem;
             margin: 0 auto;
         }
 
         .card__input * {
             background: none;
-            margin-left: 10%;
+            padding-left: 15%;
+            position: absolute;
+            height: 100%;
+            left: 0;
+            top: 0;
+            max-width: 100%;
+            padding-top: 23%;
         }
     }
 

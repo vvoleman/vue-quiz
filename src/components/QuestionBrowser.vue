@@ -66,19 +66,18 @@ export default {
 
 <style scoped lang="scss">
 .list {
-    padding: 15px;
+    padding: 15px 0;
     display: flex;
     flex-wrap: wrap;
     margin-left: auto;
     margin-right: auto;
     width: 60%;
+    gap: 5px;
 }
 
 .question-box {
     padding: 15px;
-    margin: 5px;
     border: none;
-
 }
 
 .active {
@@ -92,6 +91,7 @@ export default {
     width: 60%;
     margin-left: auto;
     margin-right: auto;
+    border-radius: 3px;
 }
 
 .question h3 {

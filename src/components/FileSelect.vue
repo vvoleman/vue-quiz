@@ -57,6 +57,8 @@ export default {
     border: 1px solid #777;
     background: #666666;
     padding: 5px 15px;
+    position: relative;
+    z-index: 5;
 }
 
 @media only screen and (max-width: 720px) {
