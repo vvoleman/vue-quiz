@@ -68,16 +68,18 @@ export default {
 .list {
     padding: 15px 0;
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     margin-left: auto;
     margin-right: auto;
     width: 60%;
     gap: 5px;
+    overflow: auto;
 }
 
 .question-box {
     padding: 15px;
     border: none;
+    white-space: nowrap;
 }
 
 .active {
