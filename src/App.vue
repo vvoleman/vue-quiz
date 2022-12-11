@@ -1,9 +1,10 @@
 <template>
-    <div class="container">
+    <div class="container container__wrapper">
         <StatsPage :questions="questions" />
         <FileSelect @loaded="loadData" />
 
         <QuizPage v-if="loaded" :questions="questions" />
+        <Footer />
     </div>
 </template>
 
@@ -11,6 +12,7 @@
 import FileSelect from "@/components/FileSelect";
 import QuizPage from "@/components/QuizPage";
 import StatsPage from "@/components/StatsPage";
+import Footer from "@/components/Layout/Footer";
 
 export default {
     name: 'App',
@@ -18,6 +20,7 @@ export default {
         StatsPage,
         QuizPage,
         FileSelect,
+        Footer
     },
     data() {
         return {
@@ -45,6 +48,7 @@ button {
 
 #app {
     position: relative;
+    min-height: 100vh;
 }
 </style>
 
@@ -54,6 +58,10 @@ button {
     padding-left: 15px;
     margin-right: auto;
     margin-left: auto;
+
+    &__wrapper {
+        padding-bottom: 3rem;
+    }
 }
 
 @media (min-width: 768px) {

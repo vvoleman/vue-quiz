@@ -1,24 +1,28 @@
 <template>
-    <button @click="display = !display">{{ !display ? "Zobrazit" : "Schovat" }} historii</button>
-    <div v-if="display">
-        <table class="modal modal--history">
-            <thead>
-                <tr>
-                    <th>Otázka</th>
-                    <th>Celkový počet</th>
-                    <th>Úspěšnost</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr v-for="question in allQuestions" :key="question.question">
-                    <td>{{ question.question }}</td>
-                    <td>{{ question.total }}</td>
-                    <td :class="{ 'bad': question.percentage >= 0 && question.percentage < 70 }">{{ question.percentage
-                    >=
-                    0 ? question.percentage + "%" : 'Žádný záznam'}}</td>
-                </tr>
-            </tbody>
-        </table>
+    <div id="history">
+        <button @click="display = !display">{{ !display ? "Zobrazit" : "Schovat" }} historii</button>
+        <button @click="deleteHistory" class="btn">Vymazat historii</button>
+        <div v-if="display">
+            <table class="modal modal--history">
+                <thead>
+                    <tr>
+                        <th>Otázka</th>
+                        <th>Celkový počet</th>
+                        <th>Úspěšnost</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="question in allQuestions" :key="question.question">
+                        <td>{{ question.question }}</td>
+                        <td>{{ question.total }}</td>
+                        <td :class="{ 'bad': question.percentage >= 0 && question.percentage < 70 }">{{
+                    question.percentage
+                        >=
+                        0 ? question.percentage + "%" : 'Žádný záznam'}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </template>
 
@@ -54,7 +58,9 @@ export default {
             }
 
             let stored = localStorage.getItem('answered')
+            const history = document.getElementById("history")
             if (stored == null) {
+                history.style.display = "none";
                 return;
             }
             stored = JSON.parse(stored)
@@ -74,6 +80,9 @@ export default {
             }
 
             this.allQuestions = result
+        },
+        deleteHistory() {
+            localStorage.removeItem("answered")
         },
         percentage(a, b) {
             if (b === 0) {
@@ -122,6 +131,19 @@ th {
         background: var(--surface-3);
 
         transition: .3s ease-in-out;
+
+        max-width: 850px;
+
+    }
+}
+
+.btn {
+    &--delete {
+        margin: 0 auto;
+    }
+
+    &--text {
+        background: none;
     }
 }
 </style>
