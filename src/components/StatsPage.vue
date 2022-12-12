@@ -1,5 +1,5 @@
 <template>
-    <div id="history">
+    <div id="history" class="history">
         <button @click="display = !display">{{ !display ? "Zobrazit" : "Schovat" }} historii</button>
         <button @click="deleteHistory" class="btn">Vymazat historii</button>
         <div v-if="display">
@@ -123,6 +123,16 @@ th {
 </style>
 
 <style scoped lang="scss">
+.history {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+
+    animation: var(--animation-scale-down) reverse, var(--animation-fade-out) reverse;
+    animation-timing-function: var(--ease-squish-5);
+    animation-duration: 1.2s;
+}
+
 .modal {
     z-index: 9999;
 

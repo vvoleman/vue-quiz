@@ -1,21 +1,27 @@
 <template>
-    <div class="settings card card--settings">
-        <h3>Načteno {{ questions.length }} otázek</h3>
-        <div>
-            <label for="">Počet otázek</label>
-            <input type="number" v-model="numberOfQuestions">
+    <div class="grid grid--fluid grid--center stack">
+        <div class="grid__row">
+            <div class="grid__col-24 grid__col-md-12">
+                <div class="card card--animated card--settings">
+                    <h3>Načteno {{ questions.length }} otázek</h3>
+                    <div style="display:flex; align-items: center; justify-content: center; flex-direction: column;">
+                        <label for="">Počet otázek</label>
+                        <input type="number" v-model="numberOfQuestions">
+                    </div>
+                    <div style="display:flex; align-items: baseline; justify-content: center">
+                        <label for="randomQuestions" style="margin-right: 5px">Řadit náhodně otázky?</label>
+                        <input id="randomQuestions" type="checkbox" v-model="sortRandomQuestions">
+                    </div>
+                    <div style="display:flex; align-items: baseline; justify-content: center">
+                        <label for="randomCorrects" style="margin-right: 5px">Řadit náhodně odpovědi?</label>
+                        <input id="randomCorrects" type="checkbox" v-model="sortRandomCorrects">
+                    </div>
+                    <button @click="run" v-if="!running" class="btn btn--run">Spustit</button>
+                    <button @click="solve" v-if="running" class="btn btn--solve">Vyhodnotit</button>
+                    <button @click="restart" v-if="running" class="btn btn--restart">Restartovat</button>
+                </div>
+            </div>
         </div>
-        <div style="display:flex; align-items: baseline; justify-content: center">
-            <label for="randomQuestions" style="margin-right: 5px">Řadit náhodně otázky?</label>
-            <input id="randomQuestions" type="checkbox" v-model="sortRandomQuestions">
-        </div>
-        <div style="display:flex; align-items: baseline; justify-content: center">
-            <label for="randomCorrects" style="margin-right: 5px">Řadit náhodně odpovědi?</label>
-            <input id="randomCorrects" type="checkbox" v-model="sortRandomCorrects">
-        </div>
-        <button @click="run" v-if="!running" class="btn btn--run">Spustit</button>
-        <button @click="solve" v-if="running" class="btn btn--solve">Vyhodnotit</button>
-        <button @click="restart" v-if="running" class="btn btn--restart">Restartovat</button>
     </div>
 
     <QuestionBrowser v-if="running" :questions="runQuestions" @answer="setAnswers" />
@@ -106,37 +112,23 @@ export default {
 }
 </script>
 
-<style scoped>
-.settings {
+<style scoped lang="scss">
+.card--settings {
     text-align: center;
     display: flex;
     justify-content: center;
     flex-direction: column;
-    padding: 15px;
-    width: 40%;
     border: 1px solid #ccc;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 15px;
-}
+    gap: 10px;
 
-.settings button {
-    margin-top: 10px;
-    font-weight: bold;
-    padding: 10px;
-}
+    h3 {
+        margin: 0 auto;
+    }
 
-.settings label {
-    display: block;
-}
-
-.settings input {
-    margin-bottom: 15px;
-}
-
-@media only screen and (max-width: 720px) {
-    .settings {
-        width: 90%;
+    button {
+        margin-top: 10px;
+        font-weight: bold;
+        padding: 10px;
     }
 }
 </style>

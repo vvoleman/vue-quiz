@@ -1,12 +1,18 @@
 <template>
-    <div class="list">
-        <button v-for="i in questions.length" class="question-box"
-            :class="{ 'active': currentQuestion === i - 1, 'btn btn--answered': answers[i - 1] != null }" :key="i"
-            @click="currentQuestion = i - 1">
-            <b>{{ i }}</b>
-        </button>
+    <div class="grid grid--center gird--fluid stack">
+        <div class="grid__row">
+            <div class="grid__col--24">
+                <div class="list">
+                    <button v-for="i in questions.length" class="question-box"
+                        :class="{ 'active': currentQuestion === i - 1, 'btn btn--answered': answers[i - 1] != null }"
+                        :key="i" @click="currentQuestion = i - 1">
+                        <b>{{ i }}</b>
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="question">
+    <div class="question card card--animated stack">
         <h3>{{ question.question }}</h3>
         <div v-for="(option, i) in question.options" :key="option">
             <input :id="i" type="radio" :name="currentQuestion" :value="i" v-model="answers[currentQuestion]"
@@ -69,9 +75,6 @@ export default {
     padding: 15px 0;
     display: flex;
     flex-wrap: nowrap;
-    margin-left: auto;
-    margin-right: auto;
-    width: 60%;
     gap: 5px;
     overflow: auto;
 }
@@ -90,10 +93,6 @@ export default {
 .question {
     border: 1px solid #ccc;
     padding: 15px;
-    width: 60%;
-    margin-left: auto;
-    margin-right: auto;
-    border-radius: 3px;
 }
 
 .question h3 {

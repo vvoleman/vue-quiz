@@ -1,5 +1,5 @@
 <template>
-    <div class="results">
+    <div class="results card card--animated stack">
         <h2>Váš výsledek je {{ percentage }}% ({{ correctAnswers }}/{{ questions.length }})</h2>
 
         <h2>Výsledky:</h2>
@@ -38,7 +38,21 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+.results {
+    border: 1px solid #ccc;
+
+    * {
+        max-width: 100%;
+
+        h2 {
+            font-size: var(--font-size-fluid-1);
+        }
+    }
+}
+
+
+
 .correct {
     color: green;
     font-weight: bold;

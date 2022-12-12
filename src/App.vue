@@ -46,9 +46,12 @@ button {
     cursor: pointer;
 }
 
-#app {
+.main {
     position: relative;
     min-height: 98vh;
+    display: grid;
+    grid-auto-flow: column;
+    align-items: center;
 }
 </style>
 
@@ -59,8 +62,15 @@ button {
     margin-right: auto;
     margin-left: auto;
 
+    overflow: hidden;
+    max-width: 100%;
+
     &__wrapper {
-        padding-bottom: 3rem;
+        padding-bottom: 3.5rem;
+    }
+
+    @media (min-width: 768px) {
+        overflow: unset;
     }
 }
 
