@@ -1,12 +1,18 @@
 <template>
-    <div class="file-select card card--animated card--file-select">
-        <div class="first card__body">
-            <span class="card__title">Vyberte soubor s daty</span>
-            <div class="card__input">
-                <input type="file" ref="file" @change="change">
+    <div class="grid grid--fluid grid--center stack">
+        <div class="grid__row">
+            <div class="grid__col-24 grid__col-md-12">
+                <div class="file-select card card--animated card--file-select ">
+                    <div class="first card__body">
+                        <span class="card__title">Vyberte soubor s daty</span>
+                        <div class="card__input">
+                            <input type="file" ref="file" @change="change">
+                        </div>
+                    </div>
+                    <button @click="load" class="loadBtn btn" v-if="isLoaded">Načíst</button>
+                </div>
             </div>
         </div>
-        <button @click="load" class="loadBtn btn" v-if="isLoaded">Načíst</button>
     </div>
 </template>
 
@@ -38,9 +44,8 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .file-select {
-    max-width: 350px;
     margin: 0 auto;
     border: 1px solid #ccc;
 }
@@ -61,9 +66,22 @@ export default {
     z-index: 5;
 }
 
-@media only screen and (max-width: 720px) {
-    .file-select {
-        width: 90%;
+.card {
+    &--file-select {
+        .card__body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            margin: 0 auto;
+        }
+
+        .card__input * {
+            background: none;
+            margin-left: 10%;
+            max-width: 80%;
+        }
     }
 }
 </style>
