@@ -2,4 +2,40 @@
     +.stack {
         margin-top: 20px;
     }
+
+
+    @mixin _variants($bp: "") {
+
+        .stack+.stack--#{$bp}-10 {
+            margin-top: 10px;
+        }
+    }
+
+    @include _variants();
+
+    @include media-xs {
+        @include _variants(xs-);
+    }
+
+    @include media-sm {
+        @include _variants(sm-);
+    }
+
+    @include media-md {
+        @include _variants(md-);
+    }
+
+    @include media-lg {
+        @include _variants(lg-);
+    }
+
+    @include media-hg {
+        @include _variants(hg-);
+    }
+
+    @include media-xl {
+        @include _variants(xl-);
+    }
+
+
 }

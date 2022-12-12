@@ -1,8 +1,13 @@
+@charset "UTF-8";
 @import "https://unpkg.com/open-props";
 @import "https://unpkg.com/open-props/normalize.min.css";
 * {
   font-family: var(--font-sans); }
 
+/*
+  * Definice Media queries
+  * (využití formou @include media-xs {} )
+  */
 .card {
   border-radius: var(--radius-2);
   padding: var(--size-fluid-3);
@@ -584,3 +589,30 @@
 
 .stack + .stack {
   margin-top: 20px; }
+
+.stack .stack + .stack---10 {
+  margin-top: 10px; }
+
+@media only screen and (min-width: 360px) {
+  .stack .stack + .stack--xs--10 {
+    margin-top: 10px; } }
+
+@media only screen and (min-width: 480px) {
+  .stack .stack + .stack--sm--10 {
+    margin-top: 10px; } }
+
+@media only screen and (min-width: 768px) {
+  .stack .stack + .stack--md--10 {
+    margin-top: 10px; } }
+
+@media only screen and (min-width: 1024px) {
+  .stack .stack + .stack--lg--10 {
+    margin-top: 10px; } }
+
+@media only screen and (min-width: 1600px) {
+  .stack .stack + .stack--hg--10 {
+    margin-top: 10px; } }
+
+@media only screen and (min-width: 1440px) {
+  .stack .stack + .stack--xl--10 {
+    margin-top: 10px; } }
