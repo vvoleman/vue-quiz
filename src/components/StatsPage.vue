@@ -127,6 +127,8 @@ th {
     display: flex;
     justify-content: center;
     margin-bottom: 15px;
+    margin-top: 15px;
+    gap: 15px;
 
     animation: var(--animation-scale-down) reverse, var(--animation-fade-out) reverse;
     animation-timing-function: var(--ease-squish-5);
