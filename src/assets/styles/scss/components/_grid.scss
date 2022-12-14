@@ -65,6 +65,7 @@ $breakpoint in $map-grid-props {
 .grid {
     max-width: $grid__bp-md * 1px;
     margin: 0 auto;
+    position: relative;
 
     &--fluid {
         margin: 0;
