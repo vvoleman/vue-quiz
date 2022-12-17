@@ -15,10 +15,10 @@
     <div class="grid grid--center gird--fluid stack">
         <div class="grid__row">
             <div class="grid__col--24 row">
-                <button :key="i" @click="prevQuestion">
-                    Předchozí
+                <button class="btn btn--navigation hidden-md-down" :key="i" @click="prevQuestion">
+                    <font-awesome-icon icon="fa-solid fa-angle-left" />
                 </button>
-                <div class="question card card--animated stack">
+                <div class="question card card--animated stack" @touchstart="touchStart">
                     <h3>{{ question.question }}</h3>
                     <div v-for="(option, i) in question.options" :key="option">
                         <input :id="i" type="radio" :name="currentQuestion" :value="i"
@@ -26,8 +26,8 @@
                         <label :for="i">{{ option }}</label>
                     </div>
                 </div>
-                <button :key="i" @click="nextQuestion">
-                    Další
+                <button class="btn btn--navigation hidden-md-down" :key="i" @click="nextQuestion">
+                    <font-awesome-icon icon="fa-solid fa-angle-right" />
                 </button>
             </div>
         </div>
@@ -82,7 +82,26 @@ export default {
             } else if (event.keyCode === 39) {
                 this.nextQuestion();
             }
+        },
+        touchStart(touchEvent) {
+            if (touchEvent.changedTouches.length !== 1) {
+                return;
+            }
+            const posXStart = touchEvent.changedTouches[0].clientX;
+            addEventListener('touchend', (touchEvent) => this.touchEnd(touchEvent, posXStart), { once: true });
+        },
+        touchEnd(touchEvent, posXStart) {
+            if (touchEvent.changedTouches.length !== 1) {
+                return;
+            }
+            const posXEnd = touchEvent.changedTouches[0].clientX;
+            if (posXStart < posXEnd) {
+                this.prevQuestion();
+            } else if (posXStart > posXEnd) {
+                this.nextQuestion();
+            }
         }
+
     }
 }
 </script>
@@ -99,6 +118,12 @@ export default {
 .row {
     display: flex;
     gap: 10px;
+    flex-direction: column;
+
+
+    @media only screen and (min-width: 768px) {
+        flex-direction: row;
+    }
 }
 
 .question-box {
@@ -128,6 +153,13 @@ export default {
 
     label {
         margin-left: var(--size-3);
+    }
+}
+
+.btn {
+    &--navigation {
+        max-width: 50px;
+        background: none;
     }
 }
 </style>
