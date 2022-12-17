@@ -1,7 +1,9 @@
 <template>
     <div class="footer">
-        <p>Stránka je stále ve vývoji. Pokud naleznete chybu, tak nám napište na <a href="https://m.me/kulisekmemo"
-                target="_blank">Messenger</a>. Děkujeme.
+        <p>Stránka je stále ve vývoji. Pokud naleznete chybu, tak nám napište na
+            <a href="https://m.me/kulisekmemo" target="_blank"><font-awesome-icon
+                    icon="fa-brands fa-facebook-messenger" /></a> | <a href="https://www.instagram.com/memousek/"
+                target="_blank"><font-awesome-icon icon="fa-brands fa-instagram" /></a>. Děkujeme.
         </p>
 
     </div>

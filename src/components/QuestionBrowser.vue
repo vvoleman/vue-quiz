@@ -12,12 +12,24 @@
             </div>
         </div>
     </div>
-    <div class="question card card--animated stack">
-        <h3>{{ question.question }}</h3>
-        <div v-for="(option, i) in question.options" :key="option">
-            <input :id="i" type="radio" :name="currentQuestion" :value="i" v-model="answers[currentQuestion]"
-                @change="change">
-            <label :for="i">{{ option }}</label>
+    <div class="grid grid--center gird--fluid stack">
+        <div class="grid__row">
+            <div class="grid__col--24 row">
+                <button class="btn btn--navigation hidden-md-down" :key="i" @click="prevQuestion">
+                    <font-awesome-icon icon="fa-solid fa-angle-left" />
+                </button>
+                <div class="question card card--animated stack" @touchstart="touchStart">
+                    <h3>{{ question.question }}</h3>
+                    <div v-for="(option, i) in question.options" :key="option">
+                        <input :id="i" type="radio" :name="currentQuestion" :value="i"
+                            v-model="answers[currentQuestion]" @change="change">
+                        <label :for="i">{{ option }}</label>
+                    </div>
+                </div>
+                <button class="btn btn--navigation hidden-md-down" :key="i" @click="nextQuestion">
+                    <font-awesome-icon icon="fa-solid fa-angle-right" />
+                </button>
+            </div>
         </div>
     </div>
 </template>
@@ -50,22 +62,46 @@ export default {
             console.log('f');
             this.$emit('answer', this.answers)
         },
+        nextQuestion() {
+            if (this.currentQuestion + 1 >= this.questions.length) {
+                this.currentQuestion = 0;
+            } else {
+                this.currentQuestion++;
+            }
+        },
+        prevQuestion() {
+            if (this.currentQuestion - 1 < 0) {
+                this.currentQuestion = this.questions.length - 1;
+            } else {
+                this.currentQuestion--;
+            }
+        },
         nextItem(event) {
             if (event.keyCode === 37) {
-                if (this.currentQuestion - 1 < 0) {
-                    this.currentQuestion = this.questions.length - 1;
-                } else {
-                    this.currentQuestion--;
-                }
+                this.prevQuestion();
             } else if (event.keyCode === 39) {
-                if (this.currentQuestion + 1 >= this.questions.length) {
-                    this.currentQuestion = 0;
-                } else {
-                    this.currentQuestion++;
-                }
+                this.nextQuestion();
             }
-            console.log(this.currentQuestion)
+        },
+        touchStart(touchEvent) {
+            if (touchEvent.changedTouches.length !== 1) {
+                return;
+            }
+            const posXStart = touchEvent.changedTouches[0].clientX;
+            addEventListener('touchend', (touchEvent) => this.touchEnd(touchEvent, posXStart), { once: true });
+        },
+        touchEnd(touchEvent, posXStart) {
+            if (touchEvent.changedTouches.length !== 1) {
+                return;
+            }
+            const posXEnd = touchEvent.changedTouches[0].clientX;
+            if (posXStart < posXEnd) {
+                this.prevQuestion();
+            } else if (posXStart > posXEnd) {
+                this.nextQuestion();
+            }
         }
+
     }
 }
 </script>
@@ -77,6 +113,17 @@ export default {
     flex-wrap: nowrap;
     gap: 5px;
     overflow: auto;
+}
+
+.row {
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+
+
+    @media only screen and (min-width: 768px) {
+        flex-direction: row;
+    }
 }
 
 .question-box {
@@ -106,6 +153,13 @@ export default {
 
     label {
         margin-left: var(--size-3);
+    }
+}
+
+.btn {
+    &--navigation {
+        max-width: 50px;
+        background: none;
     }
 }
 </style>
