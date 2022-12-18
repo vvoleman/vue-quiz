@@ -1,6 +1,6 @@
 <template>
     <div class="footer">
-        <p>Stránka je stále ve vývoji. Pokud naleznete chybu, tak nám napište na
+        <p class="footer__content">Stránka je stále ve vývoji. Pokud naleznete chybu, tak nám napište na
             <a href="https://m.me/kulisekmemo" target="_blank"><font-awesome-icon
                     icon="fa-brands fa-facebook-messenger" /></a> | <a href="https://www.instagram.com/memousek/"
                 target="_blank"><font-awesome-icon icon="fa-brands fa-instagram" /></a>. Děkujeme.
@@ -26,10 +26,19 @@ export default {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-
-    gap: .5rem;
-
-
+    gap: 0.5rem;
+    max-width: 100%;
     text-align: center;
+    padding: 0 1rem;
+
+    &__content {
+        width: 100%;
+        max-width: 100%;
+
+        svg {
+            max-width: 20px;
+            padding: 0 0.5rem;
+        }
+    }
 }
 </style>
