@@ -58,9 +58,7 @@ export default {
             }
 
             let stored = localStorage.getItem('answered')
-            const history = document.getElementById("history")
             if (stored == null) {
-                history.style.display = "none";
                 return;
             }
             stored = JSON.parse(stored)
