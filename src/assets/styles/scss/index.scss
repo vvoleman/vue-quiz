@@ -9,3 +9,47 @@
 @import "components/btn";
 @import "components/grid";
 @import "components/stack";
+
+[data-theme=dark] {
+    color-scheme: dark;
+
+    --footer-text: var(--stone-2);
+
+    body {
+        background: var(--gradient-23);
+
+        .question-box {
+
+            &.active {
+                background: var(--indigo-7);
+            }
+
+            &.btn--answered {
+                background: var(--green-9);
+            }
+        }
+
+    }
+}
+
+[data-theme=light] {
+    color-scheme: light;
+    --footer-text: var(--surface-1);
+
+
+    body {
+        background: var(--gradient-9);
+
+        .question-box {
+            background: var(--surface-1);
+
+            &.active {
+                background: var(--indigo-7);
+            }
+
+            &.btn--answered {
+                background: var(--green-9);
+            }
+        }
+    }
+}

@@ -1,5 +1,5 @@
 <template>
-    <div class="grid grid--fluid grid--center stack">
+    <div class="file-selection grid grid--fluid grid--center stack">
         <div class="grid__row">
             <div class="grid__col-24 grid__col-md-12">
                 <div class="file-select card card--animated card--file-select ">
@@ -36,6 +36,7 @@ export default {
             reader.onload = (res) => {
                 const data = JSON.parse(res.target.result);
                 this.$emit('loaded', data);
+                document.querySelector(".file-selection").style.display = "none"
             };
             reader.onerror = (err) => alert(err);
             reader.readAsText(file);
@@ -81,6 +82,12 @@ export default {
             background: none;
             margin-left: 10%;
             max-width: 80%;
+
+            &::file-selector-button {
+                color: var(--surface-1);
+                padding: 0.5em;
+                border-radius: 3px;
+            }
         }
     }
 }

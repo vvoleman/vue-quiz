@@ -1,5 +1,5 @@
 <template>
-    <div class="grid grid--fluid grid--center stack">
+    <div class="settings grid grid--fluid grid--center ">
         <div class="grid__row">
             <div class="grid__col-24 grid__col-md-12">
                 <div class="card card--animated card--settings">
@@ -17,15 +17,28 @@
                         <input id="randomCorrects" type="checkbox" v-model="sortRandomCorrects">
                     </div>
                     <button @click="run" v-if="!running" class="btn btn--run">Spustit</button>
-                    <button @click="solve" v-if="running" class="btn btn--solve">Vyhodnotit</button>
-                    <button @click="restart" v-if="running" class="btn btn--restart">Restartovat</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <QuestionBrowser v-if="running" :questions="runQuestions" @answer="setAnswers" />
-    <ResultsPage v-if="solved" :questions="runQuestions" :answers="answers" />
+    <div class="questions" v-if="running">
+        <QuestionBrowser :questions="runQuestions" @answer="setAnswers" />
+        <div class="buttons stack">
+            <button @click="solve" v-if="running" class="btn btn--solve"><font-awesome-icon
+                    icon="fa-solid fa-square-poll-vertical" /></button>
+            <button @click="restart" v-if="running" class="btn btn--restart"><font-awesome-icon
+                    icon="fa-solid fa-rotate-right" /></button>
+        </div>
+    </div>
+
+    <div v-if="solved">
+        <button @click="restart" class="btn btn--restart stack"><font-awesome-icon
+                icon="fa-solid fa-rotate-right" /></button>
+        <ResultsPage :questions="runQuestions" :answers="answers" />
+        <button @click="restart" class="btn btn--restart stack"><font-awesome-icon
+                icon="fa-solid fa-rotate-right" /></button>
+    </div>
 </template>
 
 <script>
@@ -48,6 +61,18 @@ export default {
     },
     props: {
         questions: Array
+    },
+    watch: {
+        running() {
+            if (this.running == false) {
+                document.querySelector(".file-selection").style.display = "block"
+                document.querySelector(".settings").style.display = "block"
+
+            } else {
+                document.querySelector(".file-selection").style.display = "none"
+                document.querySelector(".settings").style.display = "none"
+            }
+        }
     },
     methods: {
         run() {
@@ -107,12 +132,24 @@ export default {
             }
             this.solved = true;
             localStorage.setItem('answered', JSON.stringify(storage))
+            document.querySelector(".questions").style.display = "none";
         }
     }
 }
 </script>
 
 <style scoped lang="scss">
+.buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+
+    .btn {
+        max-width: 50px;
+    }
+}
+
 .card--settings {
     text-align: center;
     display: flex;
