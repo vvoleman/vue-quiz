@@ -133,7 +133,6 @@ export default {
 }
 
 .active {
-    background: var(--indigo-7);
     color: white;
 }
 

@@ -1,5 +1,5 @@
 <template>
-  <div class="container container__wrapper">
+  <div class="container container__wrapper container-special">
     <FileSelect @loaded="loadData" />
 
     <QuizPage v-if="loaded" :questions="questions" />
@@ -44,9 +44,7 @@ button {
 .main {
   position: relative;
   min-height: 98vh;
-  display: grid;
-  grid-auto-flow: column;
-  align-items: center;
+  padding-top: 60px;
 }
 </style>
 

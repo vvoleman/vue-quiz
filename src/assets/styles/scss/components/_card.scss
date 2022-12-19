@@ -4,6 +4,8 @@
     box-shadow: var(--shadow-2);
     position: relative;
 
+    background: var(--surface-1);
+
     transition: .3s var(--ease-elastic-5);
 
     &:hover {

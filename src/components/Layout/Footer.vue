@@ -35,6 +35,8 @@ export default {
         width: 100%;
         max-width: 100%;
 
+        color: var(--footer-text);
+
         svg {
             max-width: 20px;
             padding: 0 0.5rem;
