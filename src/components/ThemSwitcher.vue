@@ -117,6 +117,9 @@
     outline-offset: 5px;
 
     transition: .3s ease-in-out;
+
+    max-width: 20px;
+    max-height: 20px;
 }
 
 .theme-toggle>svg {
