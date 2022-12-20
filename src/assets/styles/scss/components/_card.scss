@@ -12,6 +12,16 @@
         box-shadow: var(--shadow-3);
     }
 
+    p,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        color: white !important;
+    }
+
     &--animated {
         animation: var(--animation-scale-down) reverse, var(--animation-fade-out) reverse;
         animation-timing-function: var(--ease-squish-5);

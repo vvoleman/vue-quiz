@@ -3,7 +3,7 @@
         <div class="grid__row">
             <div class="grid__col-24 grid__col-md-12">
                 <div class="card card--animated card--settings">
-                    <h3>Načteno {{ questions.length }} otázek</h3>
+                    <h3 class="card__title">Načteno {{ questions.length }} otázek</h3>
                     <div style="display:flex; align-items: center; justify-content: center; flex-direction: column;">
                         <label for="">Počet otázek</label>
                         <input type="number" v-model="numberOfQuestions">
@@ -25,8 +25,7 @@
     <div class="questions" v-if="running">
         <QuestionBrowser :questions="runQuestions" @answer="setAnswers" />
         <div class="buttons stack">
-            <button @click="solve" v-if="running" class="btn btn--solve"><font-awesome-icon
-                    icon="fa-solid fa-square-poll-vertical" /></button>
+            <button @click="solve" v-if="running" class="btn btn--solve">Vyhodnotit</button>
             <button @click="restart" v-if="running" class="btn btn--restart"><font-awesome-icon
                     icon="fa-solid fa-rotate-right" /></button>
         </div>
@@ -144,10 +143,6 @@ export default {
     justify-content: center;
     align-items: center;
     gap: 15px;
-
-    .btn {
-        max-width: 50px;
-    }
 }
 
 .card--settings {
@@ -158,7 +153,7 @@ export default {
     border: 1px solid #ccc;
     gap: 10px;
 
-    h3 {
+    .card__title {
         margin: 0 auto;
     }
 

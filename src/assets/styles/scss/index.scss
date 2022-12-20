@@ -10,10 +10,24 @@
 @import "components/grid";
 @import "components/stack";
 
+body {
+    transition: .3s ease-in-out;
+}
+
 [data-theme=dark] {
     color-scheme: dark;
 
     --footer-text: var(--stone-2);
+
+    p,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        color: var(--footer-text);
+    }
 
     body {
         background: var(--gradient-23);
@@ -29,6 +43,10 @@
             }
         }
 
+        .btn--navigation {
+            color: var(--footer-text);
+        }
+
     }
 }
 
@@ -40,6 +58,16 @@
     body {
         background: var(--gradient-9);
 
+        p,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            color: var(--footer-text);
+        }
+
         .question-box {
             background: var(--surface-1);
 
@@ -50,6 +78,10 @@
             &.btn--answered {
                 background: var(--green-9);
             }
+        }
+
+        .btn--navigation {
+            color: var(--surface-1);
         }
     }
 }
