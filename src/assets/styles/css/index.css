@@ -626,9 +626,6 @@
   .stack .stack + .stack--xl--10 {
     margin-top: 10px; } }
 
-body {
-  transition: .3s ease-in-out; }
-
 [data-theme=dark] {
   color-scheme: dark;
   --footer-text: var(--stone-2); }
