@@ -9,6 +9,41 @@
 @import "components/btn";
 @import "components/grid";
 @import "components/stack";
+@import "components/nav";
+
+
+.main {
+    position: relative;
+    min-height: 100vh;
+    grid-template-areas:
+        " content"
+        " content"
+        " footer";
+    display: grid;
+
+    overflow-x: hidden;
+}
+
+.content {
+    grid-area: content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    min-height: 80vh;
+}
+
+.footer {
+    grid-area: footer;
+}
+
+.nav__wrapper {
+    grid-area: menu;
+}
+
+body {
+    transition: background-image 10s ease-in-out;
+}
 
 [data-theme=dark] {
     color-scheme: dark;
@@ -26,7 +61,7 @@
     }
 
     body {
-        background: var(--gradient-23);
+        background-image: var(--gradient-23);
 
         .question-box {
 
@@ -52,7 +87,7 @@
 
 
     body {
-        background: var(--gradient-9);
+        background-image: var(--gradient-9);
 
         p,
         h1,

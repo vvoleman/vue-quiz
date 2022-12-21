@@ -1,5 +1,5 @@
 <template>
-  <div class="container container__wrapper container-special">
+  <div class="container-special">
     <FileSelect @loaded="loadData" />
 
     <QuizPage v-if="loaded" :questions="questions" />
@@ -39,12 +39,6 @@ export default {
 <style>
 button {
   cursor: pointer;
-}
-
-.main {
-  position: relative;
-  min-height: 98vh;
-  padding-top: 60px;
 }
 </style>
 

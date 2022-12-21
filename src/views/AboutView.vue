@@ -1,5 +1,5 @@
 <template>
-  <div class="about container container__wrapper">
+  <div class="about">
     <h1>About / How To</h1>
     <p>We are working on text</p>
   </div>
