@@ -11,8 +11,8 @@
 </template>
 
 <script>
-import FileSelect from "@/components/FileSelect";
-import QuizPage from "@/components/QuizPage";
+import FileSelect from "@/components/FileSelect.vue";
+import QuizPage from "@/components/QuizPage.vue";
 
 export default {
     name: 'App',
