@@ -24,5 +24,11 @@ export default {
             to.meta.title ? document.title = "Quiz - " + to.meta.title : document.title = "Quiz"
         },
     },
+    mounted() {
+        const savedLanguage = localStorage.getItem('i18n')
+        if (savedLanguage !== null) {
+            this.$i18n.locale = savedLanguage
+        }
+    }
 }
 </script>

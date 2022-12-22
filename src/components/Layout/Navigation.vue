@@ -20,6 +20,11 @@
                 </router-link>
                 <div class="nav__bottom">
                     <ThemeSwitcher />
+                    <select v-model="$i18n.locale">
+                        <option v-for="(lang, i) in langs" :key="`Lang${i}`" :value="lang">
+                            {{ lang }}
+                        </option>
+                    </select>
                 </div>
             </nav>
         </Transition>
@@ -32,11 +37,12 @@ import ThemeSwitcher from "@/components/ThemeSwitcher.vue"
 export default {
     name: "NavigationBar",
     components: {
-        ThemeSwitcher
+        ThemeSwitcher,
     },
     data() {
         return {
-            isVisible: true
+            isVisible: true,
+            langs: ['cs', 'en']
         }
     },
     mounted() {
@@ -48,14 +54,29 @@ export default {
         })
     },
     methods: {
+        async selectedLanguage(code) {
+            this.selected = newLanguage[0]
+            localStorage.setItem("i18n", this.selected.code)
+            this.$in18n.locale = this.selected.code
+            console.log(this.$in18n.locale)
+        },
         visibility() {
             this.isVisible = !this.isVisible
             localStorage.setItem('menu', this.isVisible)
-        },
+        }
     },
 }
 </script>
 <style lang="scss">
+.nav__bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    button {
+        background: none;
+    }
+}
 .nav__wrapper {
     display: flex;
     flex-direction: column;

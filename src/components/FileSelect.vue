@@ -4,7 +4,7 @@
             <div class="grid__col-24">
                 <div class="file-select card card--animated card--file-select ">
                     <div class="first card__body">
-                        <span class="card__title">Vyberte soubor s daty</span>
+                        <span class="card__title">{{ $t('ui.collections.input.select_file') }}</span>
                         <div class="card__input">
                             <input type="file" ref="file" @change="change" accept="application/JSON">
                         </div>
