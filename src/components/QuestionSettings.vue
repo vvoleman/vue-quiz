@@ -1,7 +1,7 @@
 <template>
     <div class="settings grid grid--fluid grid--center ">
         <div class="grid__row">
-            <div class="grid__col-24 grid__col-md-12">
+            <div class="grid__col-24">
                 <div class="card card--animated card--settings">
                     <h3 class="card__title">Načteno {{ questions.length }} otázek</h3>
                     <div style="display:flex; align-items: center; justify-content: center; flex-direction: column;">

@@ -1,12 +1,12 @@
 <template>
     <div class="file-selection grid grid--fluid grid--center stack">
         <div class="grid__row">
-            <div class="grid__col-24 grid__col-md-12">
+            <div class="grid__col-24">
                 <div class="file-select card card--animated card--file-select ">
                     <div class="first card__body">
                         <span class="card__title">Vyberte soubor s daty</span>
                         <div class="card__input">
-                            <input type="file" ref="file" @change="change">
+                            <input type="file" ref="file" @change="change" accept="application/JSON">
                         </div>
                     </div>
                     <button @click="load" class="loadBtn btn" v-if="isLoaded">Načíst</button>
