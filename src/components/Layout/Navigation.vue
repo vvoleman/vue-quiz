@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import ThemeSwitcher from "@/components/ThemSwitcher"
+import ThemeSwitcher from "@/components/ThemeSwitcher.vue"
 
 export default {
     name: "NavigationBar",

@@ -26,9 +26,9 @@
 </template>
 
 <script>
-import QuestionBrowser from "@/components/QuestionBrowser";
-import ResultsPage from "@/components/ResultsPage";
-import QuestionSettings from "@/components/QuestionSettings";
+import QuestionBrowser from "@/components/QuestionBrowser.vue";
+import ResultsPage from "@/components/ResultsPage.vue";
+import QuestionSettings from "@/components/QuestionSettings.vue";
 
 export default {
     name: "QuizPage",
