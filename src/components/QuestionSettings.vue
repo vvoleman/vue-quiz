@@ -57,7 +57,6 @@ export default {
                     let options = this.shuffle(item.options);
                     let correct = item.correct;
                     let newCorrect = options.indexOf(item.options[correct]);
-                    console.log(item);
                     item.options = options;
                     item.correct = newCorrect;
 
