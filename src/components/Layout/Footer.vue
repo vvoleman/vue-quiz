@@ -1,9 +1,9 @@
 <template>
     <div class="footer">
-        <p class="footer__content">Stránka je stále ve vývoji. Pokud naleznete chybu, tak nám napište na
+        <p class="footer__content"> {{ $t('ui.app.footer') }}
             <a href="https://m.me/kulisekmemo" target="_blank"><font-awesome-icon
                     icon="fa-brands fa-facebook-messenger" /></a> | <a href="https://www.instagram.com/memousek/"
-                target="_blank"><font-awesome-icon icon="fa-brands fa-instagram" /></a>. Děkujeme.
+                target="_blank"><font-awesome-icon icon="fa-brands fa-instagram" /></a>. {{ $t('ui.app.thanks') }}.
         </p>
 
     </div>

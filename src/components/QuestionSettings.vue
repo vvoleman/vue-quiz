@@ -16,8 +16,8 @@
                         <label for="randomCorrects" style="margin-right: 5px">Řadit náhodně odpovědi?</label>
                         <input id="randomCorrects" type="checkbox" v-model="sortRandomCorrects">
                     </div>
-                    <button @click="run" class="btn btn--run">Spustit</button>
-                    <button @click="changeFile" class="btn btn--restart">Změnit soubor</button>
+                    <button @click="run" class="btn btn--run">{{ $t('ui.app.load') }}</button>
+                    <button @click="changeFile" class="btn btn--restart">{{ $t('ui.app.changeFile') }}</button>
                 </div>
             </div>
         </div>

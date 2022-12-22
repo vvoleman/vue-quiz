@@ -10,19 +10,19 @@
                     <span class="nav__icon">
                         <font-awesome-icon icon="fa-solid fa-table-columns" />
                     </span>
-                    <span class="nav__name">Dashboard</span>
+                    <span class="nav__name">{{ $t('ui.pages.home.title') }}</span>
                 </router-link>
                 <router-link to="/about">
                     <span class="nav__icon">
                         <font-awesome-icon icon="fa-solid fa-question" />
                     </span>
-                    <span class="nav__name">How to</span>
+                    <span class="nav__name">{{ $t('ui.pages.about.title') }}</span>
                 </router-link>
                 <div class="nav__bottom">
                     <ThemeSwitcher />
-                    <select v-model="$i18n.locale">
-                        <option v-for="(lang, i) in langs" :key="`Lang${i}`" :value="lang">
-                            {{ lang }}
+                    <select @change="updateLanguage()" v-model="$i18n.locale">
+                        <option v-for="(locale, i) in locales" :key="`locale-${i}`" :value="locale">
+                            {{ locale.toUpperCase() }}
                         </option>
                     </select>
                 </div>
@@ -42,7 +42,7 @@ export default {
     data() {
         return {
             isVisible: true,
-            langs: ['cs', 'en']
+            locales: ['cs', 'en']
         }
     },
     mounted() {
@@ -51,19 +51,21 @@ export default {
             if (storage == "false") {
                 this.isVisible = !this.isVisible
             }
+            if (sessionStorage.getItem("locale")) {
+                this.$i18n.locale = sessionStorage.getItem("locale");
+            } else {
+                sessionStorage.setItem("locale", this.$i18n.locale);
+            }
         })
     },
     methods: {
-        async selectedLanguage(code) {
-            this.selected = newLanguage[0]
-            localStorage.setItem("i18n", this.selected.code)
-            this.$in18n.locale = this.selected.code
-            console.log(this.$in18n.locale)
-        },
         visibility() {
             this.isVisible = !this.isVisible
             localStorage.setItem('menu', this.isVisible)
-        }
+        },
+        updateLanguage() {
+        sessionStorage.setItem("locale", this.$i18n.locale);
+        },
     },
 }
 </script>
