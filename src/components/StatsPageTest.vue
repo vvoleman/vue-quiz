@@ -28,7 +28,7 @@
 
 <script>
 export default {
-    name: "StatsPage",
+    name: "StatsPageTest",
     props: {
         questions: Array
     },
