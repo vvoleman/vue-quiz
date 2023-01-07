@@ -32,12 +32,6 @@ export default {
     props: {
         questions: Array
     },
-    methods: {
-        loadData(data) {
-            this.loaded = true;
-            this.questions = data
-        }
-    },
     data() {
         return {
             display: false,
