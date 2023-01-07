@@ -64,13 +64,12 @@ body {
         background-image: var(--gradient-23);
 
         .question-box {
+            &.btn--answered {
+                background: var(--green-9);
+            }
 
             &.active {
                 background: var(--indigo-7);
-            }
-
-            &.btn--answered {
-                background: var(--green-9);
             }
         }
 
@@ -102,12 +101,12 @@ body {
         .question-box {
             background: var(--surface-1);
 
-            &.active {
-                background: var(--indigo-7);
-            }
-
             &.btn--answered {
                 background: var(--green-9);
+            }
+
+            &.active {
+                background: var(--indigo-7);
             }
         }
 
