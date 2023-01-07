@@ -1,0 +1,1 @@
+import{_ as e,S as a,d as o,o as s,r as n}from"./index-0c21e989.js";const c={name:"StatsPage",components:{StatsPage:a}};function r(p,_,m,f,S,d){const t=n("StatsPage");return s(),o(t)}const g=e(c,[["render",r]]);export{g as default};

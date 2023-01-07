@@ -1,1 +1,0 @@
-import{_ as e,S as o,d as a,r as n,o as c}from"./index-8c7c0234.js";const r={name:"StatsPage",components:{StatsPage:o}};function p(t,_,i,u,m,f){const s=n("StatsPage");return c(),a(s,{questions:t.questions},null,8,["questions"])}const S=e(r,[["render",p]]);export{S as default};

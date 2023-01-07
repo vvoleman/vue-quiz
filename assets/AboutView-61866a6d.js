@@ -1,0 +1,1 @@
+import{_ as c,c as s,o as _,p as a,a as d,b as o}from"./index-0c21e989.js";const n={},t=e=>(a("data-v-5d5cb719"),e=e(),d(),e),p={class:"about"},r=t(()=>o("h1",null,"About / How To",-1)),i=t(()=>o("p",null,"We are working on text",-1)),u=[r,i];function l(e,b){return _(),s("div",p,u)}const f=c(n,[["render",l],["__scopeId","data-v-5d5cb719"]]);export{f as default};
