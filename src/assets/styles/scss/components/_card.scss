@@ -1,12 +1,22 @@
+[data-theme=dark] {
+    .card {
+        background-color: rgba(169, 169, 169, 0.219);
+    }
+}
+
+[data-theme=light] {
+    .card {
+        background-color: #2b304ab5;
+    }
+}
+
 .card {
     border-radius: var(--radius-2);
     padding: var(--size-fluid-3);
     box-shadow: var(--shadow-2);
     position: relative;
 
-    background: var(--surface-1);
-
-    transition: .3s var(--ease-elastic-5);
+    //transition: .3s var(--ease-elastic-2);
 
     &:hover {
         box-shadow: var(--shadow-3);
@@ -19,7 +29,7 @@
     h4,
     h5,
     h6 {
-        color: white !important;
+        color: white;
     }
 
     &--animated {

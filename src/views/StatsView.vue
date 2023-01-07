@@ -3,24 +3,12 @@
 </template>
 
 <script>
-import StatsPage from "@/components/StatsPage";
+import StatsPage from "@/components/StatsPage.vue";
 
 export default {
   name: 'StatsPage',
   components: {
     StatsPage
   },
-  data() {
-    return {
-      questions: [],
-      loaded: false,
-    }
-  },
-  methods: {
-    loadData(data) {
-      this.loaded = true;
-      this.questions = data
-    }
-  }
 }
 </script>

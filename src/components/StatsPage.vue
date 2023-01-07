@@ -2,27 +2,27 @@
     <div id="history" class="history">
         <button @click="display = !display">{{ !display ? "Zobrazit" : "Schovat" }} historii</button>
         <button @click="deleteHistory" class="btn">Vymazat historii</button>
-        <div v-if="display">
-            <table class="modal modal--history">
-                <thead>
-                    <tr>
-                        <th>Otázka</th>
-                        <th>Celkový počet</th>
-                        <th>Úspěšnost</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr v-for="question in allQuestions" :key="question.question">
-                        <td>{{ question.question }}</td>
-                        <td>{{ question.total }}</td>
-                        <td :class="{ 'bad': question.percentage >= 0 && question.percentage < 70 }">{{
-                    question.percentage
-                        >=
-                        0 ? question.percentage + "%" : 'Žádný záznam'}}</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+    </div>
+    <div v-if="display">
+        <table class="modal modal--history">
+            <thead>
+                <tr>
+                    <th>Otázka</th>
+                    <th>Celkový počet</th>
+                    <th>Úspěšnost</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="question in allQuestions" :key="question.question">
+                    <td>{{ question.question }}</td>
+                    <td>{{ question.total }}</td>
+                    <td :class="{ 'bad': question.percentage >= 0 && question.percentage < 70 }">{{
+                question.percentage
+                    >=
+                    0 ? question.percentage + "%" : 'Žádný záznam'}}</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </template>
 
@@ -32,11 +32,19 @@ export default {
     props: {
         questions: Array
     },
+    methods: {
+        loadData(data) {
+            this.loaded = true;
+            this.questions = data
+        }
+    },
     data() {
         return {
             display: false,
             allQuestions: {},
-            stats: []
+            stats: [],
+            questions: [],
+            loaded: false,
         }
     },
     mounted() {
@@ -131,6 +139,10 @@ th {
     animation: var(--animation-scale-down) reverse, var(--animation-fade-out) reverse;
     animation-timing-function: var(--ease-squish-5);
     animation-duration: 1.2s;
+
+    position: absolute;
+    top: 0;
+    right: 15px;
 }
 
 .modal {
@@ -143,6 +155,10 @@ th {
         transition: .3s ease-in-out;
 
         max-width: 850px;
+
+        top: 2rem;
+        left: 2rem;
+        right: 2rem;
 
     }
 }
