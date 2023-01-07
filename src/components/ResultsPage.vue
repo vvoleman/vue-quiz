@@ -41,6 +41,8 @@ export default {
 <style scoped lang="scss">
 .results {
     border: 1px solid #ccc;
+    max-height: 55vh;
+    overflow: auto;
 
     * {
         max-width: 100%;
@@ -52,14 +54,15 @@ export default {
 }
 
 
-
-.correct {
-    color: green;
+span:is(.correct, .incorrect) {
     font-weight: bold;
 }
 
+.correct {
+    color: var(--green-6);
+}
+
 .incorrect {
-    color: #fd354c;
-    font-weight: bold;
+    color: var(--red-6);
 }
 </style>

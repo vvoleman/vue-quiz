@@ -1,24 +1,23 @@
 <template>
+    <StatsPage :questions="questions" />
     <div class="container-special">
-        <FileSelect @loaded="loadData" v-if="!loaded"/>
+        <FileSelect @loaded="loadData" v-if="!loaded" />
 
-        <QuizPage
-            v-if="loaded"
-            :questions="questions"
-            @changeFile="changeFile"
-        />
+        <QuizPage v-if="loaded" :questions="questions" @changeFile="changeFile" />
     </div>
 </template>
 
 <script>
 import FileSelect from "@/components/FileSelect.vue";
 import QuizPage from "@/components/QuizPage.vue";
+import StatsPage from "@/components/StatsPage.vue";
 
 export default {
     name: 'App',
     components: {
         QuizPage,
         FileSelect,
+        StatsPage
     },
     data() {
         return {
@@ -60,7 +59,7 @@ button {
     max-width: 100%;
 
     &__wrapper {
-        padding-bottom: 3.5rem;
+        padding-bottom: 5.5rem;
     }
 
     @media (min-width: 768px) {
@@ -90,6 +89,10 @@ button {
     .container {
         width: 1320px;
     }
+}
+
+.container-special {
+    width: 70vw;
 }
 </style>
 

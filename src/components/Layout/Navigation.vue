@@ -64,7 +64,7 @@ export default {
             localStorage.setItem('menu', this.isVisible)
         },
         updateLanguage() {
-        sessionStorage.setItem("locale", this.$i18n.locale);
+            sessionStorage.setItem("locale", this.$i18n.locale);
         },
     },
 }
@@ -75,10 +75,12 @@ export default {
     align-items: center;
     justify-content: space-between;
     gap: 15px;
+
     button {
         background: none;
     }
 }
+
 .nav__wrapper {
     display: flex;
     flex-direction: column;

@@ -113,6 +113,7 @@ export default {
     flex-wrap: nowrap;
     gap: 5px;
     overflow: auto;
+    justify-content: flex-start;
 }
 
 .row {
