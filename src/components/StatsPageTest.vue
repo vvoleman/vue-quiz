@@ -28,15 +28,9 @@
 
 <script>
 export default {
-    name: "StatsPage",
+    name: "StatsPageTest",
     props: {
         questions: Array
-    },
-    methods: {
-        loadData(data) {
-            this.loaded = true;
-            this.questions = data
-        }
     },
     data() {
         return {

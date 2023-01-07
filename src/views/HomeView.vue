@@ -1,5 +1,5 @@
 <template>
-    <StatsPage :questions="questions" />
+    <StatsPageTest :questions="questions" />
     <div class="container-special">
         <FileSelect @loaded="loadData" v-if="!loaded" />
 
@@ -10,14 +10,14 @@
 <script>
 import FileSelect from "@/components/FileSelect.vue";
 import QuizPage from "@/components/QuizPage.vue";
-import StatsPage from "@/components/StatsPage.vue";
+import StatsPageTest from "@/components/StatsPageTest.vue";
 
 export default {
     name: 'App',
     components: {
+        StatsPageTest,
         QuizPage,
         FileSelect,
-        StatsPage
     },
     data() {
         return {
