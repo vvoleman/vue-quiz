@@ -1,5 +1,5 @@
 <template>
-  <StatsPage :questions="questions" />
+  <StatsPage />
 </template>
 
 <script>
