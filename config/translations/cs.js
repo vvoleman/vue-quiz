@@ -23,7 +23,7 @@ const translations = {
             },
             "support": {
                 "title" : "Podpořte nás",
-                "perex" : "Vývoj a údržba projektu je financována z kapsy vývojářu a to že si máme do kapsy poměrně hluboko. Proto pokud by jste chtěli, tak nás můžete podpořit. Děkujeme.",
+                "perex" : "Vývoj a údržba projektu je financován z kapsy vývojářů - a že do kapsy máme poměrně hluboko. Proto bychom byli rádi, kdybyste nás podpořili jakýmkoliv příspěvkem. Děkujeme.",
                 "perex2": "Lze použít QR kód či na bankovní účet:"
             }
 		},
