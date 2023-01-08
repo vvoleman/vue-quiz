@@ -18,6 +18,12 @@
                     </span>
                     <span class="nav__name">{{ $t('ui.pages.about.title') }}</span>
                 </router-link>
+                <router-link to="/support">
+                    <span class="nav__icon">
+                        <font-awesome-icon icon="fa-regular fa-life-ring" />
+                    </span>
+                    <span class="nav__name">{{ $t('ui.pages.support.title') }}</span>
+                </router-link>
                 <div class="nav__bottom">
                     <ThemeSwitcher />
                     <select @change="updateLanguage()" v-model="$i18n.locale">

@@ -14,7 +14,15 @@ const routes = [
     meta: {
       title: 'About'
     }
-  }
+  },
+  {
+    path: '/support',
+    name: 'support',
+    component: () => import(/* webpackChunkName: "about" */ '../views/SupportView.vue'),
+    meta: {
+      title: 'Support us'
+    }
+  },
 ]
 
 const router = createRouter({

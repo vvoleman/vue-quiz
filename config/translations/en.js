@@ -20,6 +20,11 @@ const translations = {
             },
             "about": {
                 "title" : "How to"
+            },
+            "support": {
+                "title" : "Support us",
+                "perex" : "The development and maintenance of the project is financed from the developer's pocket, and the fact that we have relatively deep pockets. Therefore, if you would like, you can support us. Thank you",
+                "perex2": "You can use a QR code or to a bank account:"
             }
 		},
 	}
