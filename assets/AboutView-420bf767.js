@@ -1,0 +1,1 @@
+import{_ as s,c as _,o as c,p as a,a as n,b as o}from"./index-cf385e2a.js";const d={},t=e=>(a("data-v-903a1b94"),e=e(),n(),e),p={class:"about"},r=t(()=>o("h1",null,"About / How To",-1)),i=t(()=>o("p",null,"We are working on text",-1)),u=[r,i];function l(e,b){return c(),_("div",p,u)}const f=s(d,[["render",l],["__scopeId","data-v-903a1b94"]]);export{f as default};
